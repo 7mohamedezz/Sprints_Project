@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Karnak Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+            <a href="orders.html">Orders</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
+    <main class="home-main">
+        <h1>Welcome to Al-Karnak Store</h1>
+        <p>Discover our awesome products and deals!</p>
+        <h2>Our Products</h2>
+        <div class="filter-container">
+            <label for="category-filter">Filter by Category:</label>
+            <select id="category-filter" class="category-filter"></select>
+        </div>
+        <div id="product-list" class="product-grid"></div>
+    </main>
+    <script src="js/products.js"></script>
+</body>
+
+</html>
