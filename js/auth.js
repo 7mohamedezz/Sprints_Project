@@ -5,6 +5,12 @@ function saveUser(username, email, password) {
   localStorage.setItem('users', JSON.stringify(users));
 }
 
+function logout() {
+  localStorage.removeItem('loggedInUser');
+  alert("You've been logged out");
+  window.location.href = "index.html";
+}
+
 // Get all saved users
 function getUsers() {
   return JSON.parse(localStorage.getItem('users')) || [];
@@ -18,6 +24,7 @@ function login() {
   const user = users.find(u => u.username === username && u.password === password);
 
   if (user) {
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
     alert("Login successful!");
     window.location.href = "index.html";
   } else {
@@ -33,7 +40,7 @@ function register() {
   const user1 = users.find(u => u.username === username);
   const user2 = users.find(u => u.email === email);
   if (!user1 && !user2) {
-    saveUser(username, password);
+    saveUser(username, email, password);
     alert("Registration complete! Please login.");
     window.location.href = "login.html";
   } else {
@@ -46,8 +53,7 @@ function register() {
   }
 }
 
-
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function () {
   // Setup login form if it exists
   const loginForm = document.getElementById('login-form');
   if (loginForm) {
@@ -64,9 +70,4 @@ window.onload = function () {
       register();
     };
   }
-};
-
-function logout() {
-  alert("You've been logged out");
-  window.location.href = "index.html";
-}
+});
